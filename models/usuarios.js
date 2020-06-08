@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt-nodejs');
 const usuarioSchema = new mongoose.Schema({
     firstName: { type: String, required: [true, 'Nombre es requerido'] },
     lastName: { type: String , required: [true, 'Apellido es requerido'] },
-    email: { type: String },
+    // email: { type: String },
     phone: { type: String },
     gender: { type: String, enum: ["m", "f"] },
     refreshToken: String,
@@ -25,6 +25,8 @@ const usuarioSchema = new mongoose.Schema({
         exp: Date,
         refreshToken: String
     },
+    colegiacion: { type: String },
+    servicio: { type: String },
     
 }, { timestamps: true });
 

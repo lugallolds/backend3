@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('nodejscurso:server');
+var debug = require('debug')('nodejs:server');
 var http = require('http');
 
 /**
