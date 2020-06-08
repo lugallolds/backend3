@@ -36,7 +36,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // mongoose.connect('mongodb://127.0.0.1:27017/clinicagameca', {useNewUrlParser: true})
-mongoose.connect('mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
+mongoose.connect('mongodb://127.0.0.1:27017/clinicagameca?gssapiServiceName=mongodb', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
 .then(() => console.log("Connectado a mongodb"))
 .catch((err) => {
   console.log(err);
