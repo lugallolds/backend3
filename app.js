@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:27017/clinica_gameca', {useNewUrlParser: true,  useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/clinicagameca', {useNewUrlParser: true,  useUnifiedTopology: null})
 .then(() => console.log("Connectado a mongodb"))
 .catch((err) => {
   console.log(err);
@@ -73,7 +73,7 @@ app.use('/', indexRouter);
 
 //Excepciones de token JWT
 app.use(jwt(jwtConfig).unless({
-  path: [{ url: "/auth/login" }, { url: "/auth/logout" }, { url: "/auth/create" }, { url: "/auth/vericarsms" },{ url: "/auth/valida" }, { url: "/auth/refreshtoken" }, { url: "/public/upload/" }]
+  path: [{ url: "/auth/login" }, { url: "/auth/logout" }, { url: "/auth/create" }, { url: "/auth/vericarsms" },{ url: "/auth/valida" }, { url: "/auth/refreshtoken" }]
 }));
 
 // app.use('/users', usersRouter);
