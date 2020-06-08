@@ -1,9 +1,16 @@
 {
-  "name": "nodejscurso",
+  "name": "backend",
   "version": "0.0.0",
   "private": true,
+  "license": "GPL-3.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lugallolds/backend"
+    },
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www"
+
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
