@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:27017/clinicagameca', {useNewUrlParser: true,  useUnifiedTopology: null})
+mongoose.connect('mongodb://clinicasgameca.com:27017/clinicagameca', {useNewUrlParser: true,  useUnifiedTopology: null})
 .then(() => console.log("Connectado a mongodb"))
 .catch((err) => {
   console.log(err);
