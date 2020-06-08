@@ -17,12 +17,16 @@ const moment = require('moment-timezone');
 // const client = require ("twilio")(config.accountID, config.authToken)
 
 const AuthRouter = require("./routes/auth.routes");
+const PacienteRouter = require("./routes/pacientes.routes");
+const SignosRouter = require("./routes/signos.routes");
+const ConsultaRouter = require("./routes/consulta.routes");
+const HistorialRouter = require("./routes/historial.routes");
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(cors());
@@ -31,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:27017/clinica_gameca', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/clinica_gameca', {useNewUrlParser: true,  useUnifiedTopology: true})
 .then(() => console.log("Connectado a mongodb"))
 .catch((err) => {
   console.log(err);
@@ -69,11 +73,15 @@ app.use('/', indexRouter);
 
 //Excepciones de token JWT
 app.use(jwt(jwtConfig).unless({
-  path: [{ url: "/auth/login" }, { url: "/auth/logout" }, { url: "/auth/create" }, { url: "/auth/vericarsms" },{ url: "/auth/valida" }, { url: "/auth/refreshtoken" }, { url: "/public/upload/" }, { url: "/producto" }]
+  path: [{ url: "/auth/login" }, { url: "/auth/logout" }, { url: "/auth/create" }, { url: "/auth/vericarsms" },{ url: "/auth/valida" }, { url: "/auth/refreshtoken" }, { url: "/public/upload/" }]
 }));
 
 // app.use('/users', usersRouter);
 app.use('/auth', AuthRouter);
+app.use('/paciente', PacienteRouter);
+app.use('/signos', SignosRouter);
+app.use('/consulta', ConsultaRouter);
+app.use('/historial', HistorialRouter);
 
 
 app.use(function(req, res, next) {
