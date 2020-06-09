@@ -36,7 +36,9 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // mongoose.connect('mongodb://127.0.0.1:27017/clinicagameca', {useNewUrlParser: true})
-mongoose.connect('mongodb://127.0.0.1:27017/clinicagameca?gssapiServiceName=mongodb', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
+// mongoose.connect('mongodb://127.0.0.1:27017/clinicagameca?gssapiServiceName=mongodb', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
+// mongoose.connect('mongodb://localhost:27017/clinicagameca', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
+mongoose.connect('mongodb://localhost:27017/clinicagameca', {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true,})
 .then(() => console.log("Connectado a mongodb"))
 .catch((err) => {
   console.log(err);
@@ -93,7 +95,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'production' ? err : {};
   if (err.message === 'token blocked') {
     err.status = 401;
   }
